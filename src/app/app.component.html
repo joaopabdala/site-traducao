@@ -1,0 +1,70 @@
+
+
+<main class="main">
+  <div class="content">
+    <div class="left-side">
+
+      <h1>A, {{ title }}</h1>
+      <p>Congratulations! Your app is running. 🎉</p>
+    </div>
+    <div class="divider" role="separator" aria-label="Divider"></div>
+    <div class="right-side">
+      <div class="pill-group">
+        @for (item of [
+          { title: 'Explore the Docs', link: 'https://angular.dev' },
+          { title: 'Learn with Tutorials', link: 'https://angular.dev/tutorials' },
+          { title: 'CLI Docs', link: 'https://angular.dev/tools/cli' },
+          { title: 'Angular Language Service', link: 'https://angular.dev/tools/language-service' },
+          { title: 'Angular DevTools', link: 'https://angular.dev/tools/devtools' },
+        ]; track item.title) {
+          <a
+            class="pill"
+            [href]="item.link"
+            target="_blank"
+            rel="noopener"
+          >
+            <span>{{ item.title }}</span>
+       
+          </a>
+        }
+      </div>
+      <div class="social-links">
+        <a
+          href="https://github.com/angular/angular"
+          aria-label="Github"
+          target="_blank"
+          rel="noopener"
+        >
+      
+        </a>
+        <a
+          href="https://twitter.com/angular"
+          aria-label="Twitter"
+          target="_blank"
+          rel="noopener"
+        >
+     
+        </a>
+        <a
+          href="https://www.youtube.com/channel/UCbn1OgGei-DV7aSRo_HaAiw"
+          aria-label="Youtube"
+          target="_blank"
+          rel="noopener"
+        >
+        
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+<router-outlet />
