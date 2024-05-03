@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-search-bar',
+  imports: [FormsModule],
   standalone: true,
-  imports: [],
   templateUrl: './search-bar.component.html',
-  styleUrl: './search-bar.component.scss'
+  styleUrls: ['./search-bar.component.scss'],
+  // Import FormsModule here if it's not already imported in your AppModule
 })
 export class SearchBarComponent {
-
+  search = "";
 }
