@@ -2,6 +2,7 @@ import { Routes } from "@angular/router";
 import { MainComponent } from "./main/main.component";
 import { ArchiveComponent } from "./archive/archive.component";
 import { TextComponent } from "./text/text.component";
+import { IncludeTextComponent } from "./include-text/include-text.component";
 
 const routeConfig: Routes = [
     {
@@ -18,6 +19,11 @@ const routeConfig: Routes = [
     {
         path: 'text',
         component: TextComponent,
+        title: 'texto'
+    },
+    {
+        path: 'text-insert',
+        component: IncludeTextComponent,
         title: 'texto'
     }
 ];

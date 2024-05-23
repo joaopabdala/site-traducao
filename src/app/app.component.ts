@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { NavComponent } from './nav/nav.component';
-import { MainComponent } from './main/main.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 
 @Component({

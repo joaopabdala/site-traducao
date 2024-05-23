@@ -1,0 +1,25 @@
+<div class="flex flex-col mx-56 mt-8">
+
+    
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col justify-">
+        <label for="title">Título</label>
+        <input id="title" formControlName="title" class="border border-black rounded w-2/4" />
+      <div *ngIf="title?.invalid && (title?.dirty || title?.touched)">
+        <div *ngIf="title?.errors?.['required']">Título é obrigatório.</div>
+        <div *ngIf="title?.errors?.['pattern']">Título inválido.</div>
+    </div>
+    <label for="author">Autor</label>
+    <input id="author" formControlName="author" class="border border-black rounded w-2/4"/>
+    <div *ngIf="author?.invalid && (author?.dirty || author?.touched)">
+        <div *ngIf="author?.errors?.['required']">Autor é obrigatório.</div>
+        <div *ngIf="author?.errors?.['pattern']">Autor inválido.</div>
+    </div>
+    <label for="text">Texto</label>
+    <textarea id="text" formControlName="text"  class="border border-black rounded h-56"></textarea>
+    <div *ngIf="text?.invalid && (text?.dirty || text?.touched)">
+        <div *ngIf="text?.errors?.['required']">Texto é obrigatório.</div>
+    </div>
+<button type="submit" [disabled]="form.invalid" class="flex border border-black bg-blue-600 w-1/12 text-center justify-center rounded mt-5">Enviar</button>
+</form>
+
+</div>
