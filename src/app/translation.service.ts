@@ -15,7 +15,7 @@ export class TranslationService {
     const body = JSON.stringify({
       q: text,
       source: 'en',
-      target: 'bn',
+      target: 'pt',
       format: 'text',
       api_key: ''
     });

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -6,9 +6,14 @@ import { FormsModule } from '@angular/forms';
   imports: [FormsModule],
   standalone: true,
   templateUrl: './search-bar.component.html',
-  styleUrls: ['./search-bar.component.scss'],
-  // Import FormsModule here if it's not already imported in your AppModule
+  styleUrls: ['./search-bar.component.scss']
 })
 export class SearchBarComponent {
-  search = "";
+  search = '';
+
+  @Output() searchTextChanged = new EventEmitter<string>();
+
+  onSearchChange(): void {
+    this.searchTextChanged.emit(this.search);
+  }
 }

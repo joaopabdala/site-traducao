@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 import { TranslationService } from '../translation.service';
 import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -15,7 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 export class IncludeTextComponent {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private translationService: TranslationService) {
+  constructor(private fb: FormBuilder, private translationService: TranslationService, private router: Router) {
     this.form = this.fb.group({
       title: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9 ]+$')]],
       author: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
@@ -39,7 +41,7 @@ export class IncludeTextComponent {
       existingTexts.push(savedData);
       localStorage.setItem('texts', JSON.stringify(existingTexts));
   
-      console.log(savedData);
+      this.router.navigate(['']);
     }
   }
 

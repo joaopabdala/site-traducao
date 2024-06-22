@@ -1,27 +1,36 @@
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { SearchBarComponent } from '../search-bar/search-bar.component';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [ NgFor, NgIf, CommonModule ],
+  imports: [NgFor, NgIf, CommonModule, SearchBarComponent],
   templateUrl: './main.component.html',
-  styleUrl: './main.component.scss'
+  styleUrls: ['./main.component.scss']
 })
-
 export class MainComponent implements OnInit {
   texts: any[] = [];
+  filteredTexts: any[] = [];
 
   ngOnInit(): void {
     this.loadTexts();
   }
 
-  loadTexts() {
+  loadTexts(): void {
     this.texts = JSON.parse(localStorage.getItem('texts') || '[]');
+    this.filteredTexts = this.texts;
+  }
+
+  onSearchTextChanged(searchText: string): void {
+    this.filteredTexts = this.texts.filter(text =>
+      text.title.toLowerCase().includes(searchText.toLowerCase()) ||
+      text.author.toLowerCase().includes(searchText.toLowerCase()) ||
+      text.text.toLowerCase().includes(searchText.toLowerCase())
+    );
   }
 
   toggleText(index: number): void {
-    this.texts[index].isExpanded = !this.texts[index].isExpanded;
+    this.filteredTexts[index].isExpanded = !this.filteredTexts[index].isExpanded;
   }
-
 }
