@@ -1,0 +1,7 @@
+services:
+  libretranslate:
+    image: libretranslate/libretranslate:latest-cuda
+    ports:
+      - "5000:5000"
+    environment:
+      - EXPORT LT_LOAD_ONLY="en,pt,es"
