@@ -17,6 +17,8 @@ import { Router } from '@angular/router';
 export class IncludeTextComponent {
   private apiUrl = 'http://localhost:3000/texts';
   form: FormGroup;
+  errorMessage: string | null = null;
+
 
   constructor(private fb: FormBuilder, private translationService: TranslationService, private router: Router, private http: HttpClient) {
     this.form = this.fb.group({
@@ -39,11 +41,14 @@ export class IncludeTextComponent {
         translatedText: translatedText.translatedText
       };
       this.http.post(this.apiUrl, savedData).subscribe({
-        next: () => this.router.navigate(['']),
-        error: (error) => console.error('Error saving text:', error)
+        next: () => {
+          this.router.navigate(['']);
+        },
+        error: (error) => {
+          console.error('Error saving data:', error);
+          this.errorMessage = 'Rodar Json-server: json-server --watch server.json';
+        }
       });
-  
-      this.router.navigate(['']);
     }
   }
 
@@ -53,6 +58,7 @@ export class IncludeTextComponent {
       return response;
     } catch (error) {
       console.error('Error calling translation service:', error);
+      this.errorMessage = 'Rodar o comando para criar o servidor com libreTranslate: docker run -ti --rm -p 5000:5000 libretranslate/libretranslate --load-only pt,en';
       throw error;
     }
   }
