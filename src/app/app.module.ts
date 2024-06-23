@@ -2,14 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslationService } from './translation.service';
+import { TextDetailComponent } from './text-detail/text-detail.component';
+
 
 @NgModule({
   declarations: [
-    // outros componentes se necessário
+    TextDetailComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [TranslationService],
 })

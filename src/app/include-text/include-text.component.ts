@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TranslationService } from '../translation.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 
@@ -15,12 +15,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./include-text.component.scss']
 })
 export class IncludeTextComponent {
+  private apiUrl = 'http://localhost:3000/texts';
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private translationService: TranslationService, private router: Router) {
+  constructor(private fb: FormBuilder, private translationService: TranslationService, private router: Router, private http: HttpClient) {
     this.form = this.fb.group({
-      title: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9 ]+$')]],
-      author: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
+      title: ['', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ0-9 \-]+$')]],
+      author: ['', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ0-9 \-]+$')]],
       text: ['', Validators.required]
     });
   }
@@ -37,9 +38,10 @@ export class IncludeTextComponent {
         ...formData,
         translatedText: translatedText.translatedText
       };
-      const existingTexts = JSON.parse(localStorage.getItem('texts') || '[]');
-      existingTexts.push(savedData);
-      localStorage.setItem('texts', JSON.stringify(existingTexts));
+      this.http.post(this.apiUrl, savedData).subscribe({
+        next: () => this.router.navigate(['']),
+        error: (error) => console.error('Error saving text:', error)
+      });
   
       this.router.navigate(['']);
     }
