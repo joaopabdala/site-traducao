@@ -1,11 +1,14 @@
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
+import { HttpClient } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [NgFor, NgIf, CommonModule, SearchBarComponent],
+  imports: [NgFor, NgIf, CommonModule, SearchBarComponent, RouterModule],
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
@@ -13,13 +16,23 @@ export class MainComponent implements OnInit {
   texts: any[] = [];
   filteredTexts: any[] = [];
 
+  private apiUrl = 'http://localhost:3000/texts'; 
+  constructor(private http: HttpClient) { }
+
   ngOnInit(): void {
     this.loadTexts();
   }
 
   loadTexts(): void {
-    this.texts = JSON.parse(localStorage.getItem('texts') || '[]');
-    this.filteredTexts = this.texts;
+    this.http.get<any[]>(this.apiUrl).subscribe({
+      next: (data) => {
+        this.texts = data;
+        this.filteredTexts = this.texts;
+      },
+      error: (error) => {
+        console.error('Error loading texts:', error);
+      }
+    });
   }
 
   onSearchTextChanged(searchText: string): void {

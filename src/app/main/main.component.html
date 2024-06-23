@@ -5,7 +5,9 @@
   </div>
   <ul class="space-y-4">
     <li *ngFor="let text of filteredTexts; let i = index" class="p-4 border border-gray-300 rounded-lg shadow-sm">
-      <h3 class="text-xl font-semibold mb-2">{{ text.title }}</h3>
+      <h3 class="text-xl font-semibold mb-2">
+        <a [routerLink]="['/text', text.id]" class="text-blue-500 hover:underline">{{ text.title }}</a>
+      </h3>
       <p class="mb-2"><strong>Autor:</strong> {{ text.author | uppercase }}</p>
       <div (click)="toggleText(i)" class="cursor-pointer">
         <p *ngIf="!text.isExpanded" class="text-gray-700 truncate">{{ text.text }}</p>
