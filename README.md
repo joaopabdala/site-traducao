@@ -1,6 +1,16 @@
 # site-traducao
 Projeto feito para a matéria da faculdade de framework usando Angular 
 
+# api tradução:
+Para que a tradução seja feita foi utilizada a api do libreTranslate, que só é acessível de forma gratuída quando rodada via docker localmente, para isso deve-se usar o seguinte comando afim de usar a aplicação:
+
+```docker run -ti --rm -p 5000:5000 libretranslate/libretranslate --load-only pt,en```
+
+# projeto: 
+
+figma: https://www.figma.com/design/JOVgPTkuJagqkBy9yW3PdW/Untitled?node-id=0-1&t=f9Tv7GY7WWIKSbsM-0
+
+produção: https://site-traducao.vercel.app/text/1
 
 ## Checklist
 #### RA1 - Prototipar e projetar interfaces gráficas de usuário, considerando princípios de usabilidade e experiência do usuário.
