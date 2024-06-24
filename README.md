@@ -12,6 +12,8 @@ figma: https://www.figma.com/design/JOVgPTkuJagqkBy9yW3PdW/Untitled?node-id=0-1&
 
 produção: https://site-traducao.vercel.app/text/1
 
+link vídeo de apresentação: https://drive.google.com/file/d/12jWp5UB3Hn8BiioSaVCOLV40UsEipPXf/view?usp=sharing
+
 ## Checklist
 #### RA1 - Prototipar e projetar interfaces gráficas de usuário, considerando princípios de usabilidade e experiência do usuário.
 - [X] ID1: O aluno desenvolveu protótipos de interfaces que demonstram compreensão das diretrizes de usabilidade.
